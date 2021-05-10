@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <mat-icon>menu</mat-icon>
+  <span>Messages App</span> </mat-toolbar
+><virtual-scroller
+  #scroll
+  [items]="messageList"
+  (vsEnd)="fetchMore($event)"
+  [enableUnequalChildrenSizes]="true"
+>
+  <mat-card
+    (swipeleft)="swipe(item.id, $event.type)"
+    (swiperight)="swipe(item.id, $event.type)"
+    class="example-card"
+    *ngFor="let item of scroll.viewPortItems"
+  >
+    <div class="card-container">
+      <mat-card-actions
+        *ngIf="item?.isDeleteVisible"
+        [@enterAnimation]
+        class="delete-container"
+      >
+        <span class="delete-button">Delete</span
+        ><span class="material-icons"> delete </span>
+      </mat-card-actions>
+      <mat-card-actions
+        *ngIf="item?.isEditVisible"
+        [@enterAnimation]
+        class="edit-container"
+      >
+        <span class="edit-button">Edit</span
+        ><span class="material-icons"> edit </span>
+      </mat-card-actions>
+      <div class="card-details">
+        <mat-card-header>
+          <img mat-card-avatar [src]="imgPath + item.author.photoUrl" />
+          <mat-card-title>{{ item.author.name }}</mat-card-title>
+          <mat-card-subtitle>{{ item.updated | date }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="text-content">{{ item.content }}</p>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+  <ng-container *ngIf="loading">
+    <mat-spinner class="m-0" diameter="50"></mat-spinner>
+  </ng-container>
+</virtual-scroller>

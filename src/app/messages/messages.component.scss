@@ -1,0 +1,57 @@
+virtual-scroller {
+  height: calc(100vh - 4rem);
+}
+
+mat-card-actions {
+  margin: 0.2em;
+  padding: 0.5em;
+}
+mat-card {
+  margin: 0.7em;
+  padding: 0.7em;
+}
+
+.card-container {
+  display: flex;
+  margin: 0.3em;
+}
+.delete-container {
+  background-color: #ff1744;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4px;
+}
+.delete-button {
+  writing-mode: tb-rl;
+  transform: rotate(180deg);
+  align-self: center;
+  margin-bottom: 0.5em;
+}
+.edit-container {
+  background-color: #00e5ff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4px;
+}
+.edit-button {
+  writing-mode: tb-rl;
+  transform: rotate(180deg);
+  align-self: center;
+  margin-bottom: 0.5em;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px !important;
+}
+.text-content {
+  margin-left: 10px;
+}
+.m-0 {
+  margin: 0 auto;
+}
