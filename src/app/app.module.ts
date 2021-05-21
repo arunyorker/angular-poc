@@ -12,6 +12,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { VirtualScrollerModule } from "ngx-virtual-scroller";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent, MessagesComponent],
   imports: [
@@ -25,6 +27,12 @@ import { MatIconModule } from "@angular/material/icon";
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatIconModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
